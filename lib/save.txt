@@ -1,0 +1,9 @@
+---
+:word: buccal
+:lines: _ u _ _ _ _
+:incorrect_guesses:
+- e
+- s
+- n
+:hangman_stage: 3
+:turns: 3
