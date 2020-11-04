@@ -59,7 +59,7 @@ class Selection
   end
 end
 
-class Game
+class Game < Selection
   def initialize(word, lines, incorrect_guesses = [], turns = 6, hangman_stage = 0)
     @word = word
     @lines = lines
@@ -95,13 +95,15 @@ class Game
   end
   
   def take_guess
-    puts "Guess a letter... or press '1' to save."
+    puts "Guess a letter... or press '1' to save or '2' to load."
     puts "Previous guesses: #{@incorrect_guesses.join(' ')}"
     answer = gets.chomp
     if answer == '1'
       save_game
+    elsif answer == '2'
+      Selection.new(load_save)
     else
-    @guess = answer
+      @guess = answer
     end
     system 'clear'
   end
@@ -163,7 +165,7 @@ class Game
 
     File.open('save.txt', 'w') { |f| f.write save}
     puts 'Game Saved!'
-    take_guess
+    Selection.new
   end
 
   def display_hangman
